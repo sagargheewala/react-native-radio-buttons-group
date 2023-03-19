@@ -5,7 +5,8 @@ import isEqual from 'lodash.isequal';
 import RadioButton from './RadioButton';
 import { RadioButtonProps, RadioGroupProps } from './types';
 
-export default function RadioGroup({ containerStyle, layout = 'column', onPress, radioButtons }: RadioGroupProps) {
+export default function RadioGroup({ containerStyle, layout = 'column', onPress, radioButtons, labelStyle,
+  descriptionStyle, radioMainView, borderColor, color }: RadioGroupProps) {
 
   const [radioButtonsLocal, setRadioButtonsLocal] = useState<RadioButtonProps[]>(radioButtons);
 
@@ -27,16 +28,22 @@ export default function RadioGroup({ containerStyle, layout = 'column', onPress,
   return (
     <View style={[styles.container, { flexDirection: layout }, containerStyle]}>
       {radioButtonsLocal.map((button) => (
-        <RadioButton
-          {...button}
-          key={button.id}
-          onPress={(id: string) => {
-            handlePress(id);
-            if (button.onPress && typeof button.onPress === 'function') {
-              button.onPress(id);
-            }
-          }}
-        />
+        <View key={index} style={radioMainView}>
+          <RadioButton
+            {...button}
+            labelStyle={labelStyle}
+            borderColor={borderColor}
+            color={color}
+            descriptionStyle={descriptionStyle}
+            key={button.id}
+            onPress={(id: string) => {
+              handlePress(id);
+              if (button.onPress && typeof button.onPress === 'function') {
+                button.onPress(id);
+              }
+            }}
+          />
+        </View>
       ))}
     </View>
   )
