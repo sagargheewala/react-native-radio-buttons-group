@@ -21,4 +21,9 @@ export type RadioGroupProps = {
   layout?: 'row' | 'column';
   onPress?: (radioButtons: RadioButtonProps[]) => void;
   radioButtons: RadioButtonProps[];
+  labelStyle?: object;
+  descriptionStyle?: object;
+  radioMainView?: object;
+  borderColor?: string;
+  color?: string;
 };
