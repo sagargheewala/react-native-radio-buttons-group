@@ -27,7 +27,7 @@ export default function RadioGroup({ containerStyle, layout = 'column', onPress,
 
   return (
     <View style={[styles.container, { flexDirection: layout }, containerStyle]}>
-      {radioButtonsLocal.map((button) => (
+      {radioButtonsLocal.map((button, index) => (
         <View key={index} style={radioMainView}>
           <RadioButton
             {...button}
