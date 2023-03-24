@@ -55,7 +55,8 @@ export default function RadioButton({
           style={[
             styles.border,
             {
-              borderColor: borderColor || color,
+              borderColor: selected ? color : borderColor || color,
+              backgroundColor: selected ? color : 'transparent',
               borderWidth,
               width: sizeFull,
               height: sizeFull,
@@ -65,7 +66,7 @@ export default function RadioButton({
           {selected && (
             <View
               style={{
-                backgroundColor: color,
+                backgroundColor: '#fff',
                 width: sizeHalf,
                 height: sizeHalf,
                 borderRadius: sizeHalf,
